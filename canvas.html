@@ -1,0 +1,61 @@
+<html>
+<head><title>heloo</title></head>
+<body>
+<canvas id = "my_canvas"></canvas>
+
+<script>
+
+var canvas = null;
+var context = null;
+var img = null;
+var frame_num = 0;
+
+var assets = ['1.jpg','2.jpg','3.jpg','4.jpg'];
+var frames = [];
+
+
+onImageLoad = function() {
+
+
+context.clearRect(0,0,canvas.width,canvas.height);
+context.drawImage(img,0,0);
+
+};
+
+setup = function() {
+
+canvas = document.getElementById("my_canvas");
+context = canvas.getContext('2d');
+canvas.width =900;
+canvas.height = 600;
+
+
+img = new Image();
+img.src = assets[frame_num];
+img.onload = animate;
+
+setInterval(animate,1000);
+};
+
+animate = function() {
+img.src = assets[frame_num];
+img.onload = onImageLoad;
+frame_num = (frame_num + 1) % assets.length;
+document.getElementById("num").innerHTML = frame_num;
+//alert("done"+frame_num);
+};
+
+
+
+setup();
+
+</script>
+
+<p id = "num" />
+<canvas id="my_canvas" name="my_canvas" width="900" height="600" ></canvas>
+</body>
+
+</html>
+
+
+

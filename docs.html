@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>VTUBE</title>
+<meta name="keywords" content="video,amimul,IEEE, CSS, HTML" />
+<meta name="description" content="faster video streaming" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+ <!------------------------------------------------------------- start of header ------------------------------------------------------->
+<div id="header_panel">
+<div id="header_section">
+       <div id="title">
+           V R human
+      </div>
+     
+</div>
+</div>
+ <!------------------------------------------------------------- end of header ------------------------------------------------------->
+
+ <!------------------------------------------------------------- start of menu ------------------------------------------------------->    
+    <div id="menu_panel">
+
+    	<div id="menu">
+            <ul>
+              <li><a href="index.html"  class="current">Home</a></li>
+                <li><a href="emotion.html">Emotions</a></li>
+                <li><a href="blend.html">Blender Emotions</a></li>  
+                <li><a href="compare.html">Compare Emotions</a></li>
+                <li><a href="docs.html">Documentation</a></li> 
+                <li><a href="about.html">About Us</a></li>                  
+            </ul> 
+		</div>
+    </div> 
+ <!------------------------------------------------------------- end of menu ------------------------------------------------------->
+
+
+<!--------------------------------------------------------------Video container starts-------------------------------------------------------->           
+                    <div id="container">
+		<div class="documentation" style="background: #FFF; color: #000; font-size: 14px; padding: 15px">
+		
+<h4>
+ 
+1.0 Introduction 
+ <br />
+ 
+In our project “Mechanism and Expression of Emotion in Virtual Human”, we plan to implement the following phases mentioned in the development lifecycle: 
+•	Design of Human Model  <br />
+•	Design of Emotion model on a neutral face  <br />
+•	Adding Emotion to the final human model  <br />
+•	Extracting the frames from the animation rendered by the platform  <br />
+ 
+  <br />
+The Softwares used in the project were: 
+•	Blender 2.65a  <br />
+•	MakeHuman 1.0 alpha 7  <br />
+ <br /> 
+The Programming languages used in the project were: 
+•	Python 
+•	HTML/Javascript/CSS 
+ 
+  <br />
+ 
+ 	 
+2.0 Implementation Procedure 
+  <br />
+2.1 Creating Human Model 
+  <br />
+     The Human Model to be finally submitted has to be according to the specification provided by MPEG-4 facial parameters. Therefore we employ standard Virtual Human Modeling software like MakeHuman. The software is open-source and available for free of cost. For testing and other purposes we used ready-made models available in form of .blend files for Blender. These files can be obtained from any Blender content exchange forums like BlendSwap [].  
+    Design of Human Model within MakeHuman:  <br />
+•	MakeHuman provides a basic model to which the user can add/delete various features according to his requirements. 
+•	Some of the feature that we modified are:  <br />
+	Degree of Gender set to min value to get a Female model  <br />
+	Properties such as height, weight, skin tone, Africa/Asian origin points were adjusted accordingly.  <br />
+	From the present library clothes, shoes and hair was given.  <br />
+	Other factors such as symmetry, face and arm shape etc. were adjusted.   <br />
+   The model designed in MakeHuman was to be exported to Blender so appropriate animation can be done.  <br />
+To export a Human model from MakeHuman to Blender, perform the following steps:  <br />
+•	In MakeHuman from the export tab select the file type as ‘Blender exchange (mhx)’.  <br />
+•	In Blender go to File>User Preferences. Select Add-ons and choose import-export. Check the Blender exchange (mhx) format.  <br />
+•	Open a new blender file and select File>Import>mhx and search for the name of the exported file from MakeHuman.  <br />
+  
+ <br />
+ 
+2.2 Emotion model  <br />
+ 
+Once the mesh model was exported to Blender, we started the animation procedure for the various emotions. To display emotions according to user inputs we used shape keys in-order to render animation when an action is recorded. 
+ To setup a shape key driver:  <br />
+•	Select the object or the face in this case. In Object data select Shape key and add a new Shape key.   <br />
+•	In Edit mode, perform the necessary changes to the mesh model of the face.  <br />
+•	In order for the animation to occur we need to add an object that controls the animation. A simple object like cube will suffice.  <br />
+•	Right click on the value bar in the Shape key menu and Select Add Driver.  <br />
+•	Open a new Window and select Graph Editor Option.  <br />
+•	Change the mode from F-Curve Editors to Drivers.  <br />
+•	Select the Shape Key name and change the name of the variable to the same on the right property window under Drivers.  <br />
+•	Also select type as Averaged Value and under Transform Channel type as Z location.  <br />
+•	In ob/Bone select the object name which acts as the animation modifier.  <br />
+•	Whenever the object moves the animation will occur.  <br />
+Procedure to Render Animation:  <br />
+•	In Blender Animation is done using a series of images called frames.  <br />
+•	These frames have to be defined in terms of start frame and end frame.  <br />
+•	To begin Blender Render Mode is selected from the top bar.  <br />
+•	In the property window under Render, the output file format as well as location and other factors such as image quality etc. are set.  <br />
+•	The start and end frames are chosen and appropriate changes are made to the mesh in each of the end frames. In both the frames the position are locked by pressing I > LocRotScale.  <br />
+•	The frame is selected from which onward the animation should begin.  <br />
+•	Once all the changes are in place press Ctrl F12 to start the Render Animation procedure.  <br />
+  <br />
+2.3 Making the GUI  <br />
+ 
+The entire project is presented in form of a web site, where the user can browse through our emotion models and even upload their own pictures for the ongoing work on calibrating our model. 
+  <br />
+ 
+3.0 Implementation Evaluation 
+  <br />
+ 
+For evaluation of the implemented work, the appropriate technique to be used would be a field study. 
+All the participants would be asked to use “Think aloud” observation method, where they would compare the emotion on the Virtual Human with that they would express. If any differences are noticed then, they would be asked to report them using query techniques such as “Questionnaires”. 
+  <br />
+Using the results obtained from these experiments we would be able to calibrate our emotion model for a specific group of people.  
+  <br />
+  
+ <br />
+ 	 
+7.0 References  <br />
+ 
+[1]	- Hana Boukricha and Ipke Wachsmuth “Mechanism, Modulation, and        
+Expression of Empathy in a Virtual Human”. 978-1-61284-084-0/11/$26.00 
+©2011 IEEE 
+ 
+[2]	- http://www.miralab.unige.ch/.  <br />
+[3]	- "http://vrlab.epfl.ch/."  <br />
+ <br />[4]	- S. McQuiggan, J. Robison, R. Phillips, and J. Lester, “Modeling parallel and reactive empathy in virtual agents: An inductive approach,” in Proc. of 7th Int. Conf. on Autonomous Agents and Multiagent Systems (AAMAS 2008), Padgham, Parkes, M¨uller, and Parson, Eds., Estoril, Portugal, 2008, pp. 167– 174. 
+ <br />[5]	- Orthony, A.: The Cognitive Structure of Emotions. Cambridge University 
+Press, New York, USA (1990) 
+ 
+ <br />[6]	- de Melo, C., Paiva, A.: Environment Expression: Expressing Emotions through Cameras, Lights and Music. In: Tao, J., Tan, T., Picard, R.W. (eds.) ACII 2005.LNCS, vol. 3784, pp. 715–722. Springer, Heidelberg (2005) 
+ 
+ 
+ </h4>
+ 
+ 
+ </div>
+ 
+ 
+ 
+
+  </div>
+
+<!--------------------------------------------------------------Video container ends-------------------------------------------------------->                               
+
+
+
+<!-----------------------------------------------------start of footer----------------------------------------------------- -->
+
+
+    	<div id="footer">
+           <div class="footpos">
+	        <div class="footer_content">
+                <h3 >Acknowledgement</h3>
+                <p>This project was proposed by Professor GRM Reddy, Dept. of Information Technology NITK. We would like to thank him for the motivation and support he provided us. We would also like to thank Mr. Shridhar Domanal for continuously evaluating and guiding us.</p>
+                  </div>
+          <div class="footer_content">
+                <h3>Tools Used</h3>
+                <p>&emsp;&emsp;&emsp;&emsp;Make Human&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Blender <br>&emsp;&emsp;&emsp;&emsp;HTML&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;CSS, <br>&emsp;&emsp;&emsp;&emsp;Photoshop</p>
+            </div>
+
+        </div><!---end of footpos---->
+<div class="indent">
+		Copyright © 2048 <a href="#">VeeTUBE.com</a>&emsp;&emsp; | &emsp;&emsp;Designed by&emsp;<a rel="nofollow" href="in.linkedin.com/pub/dir/Amimul/Ehsan">@m!m</a>
+                </div>
+        </div>
+
+ <!------------------------------------------------------------ end of footer------------------------------------------------------- --></div>
+
+</body>
+</html>
